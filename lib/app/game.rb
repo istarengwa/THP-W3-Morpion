@@ -9,6 +9,7 @@ class Game
     @statso = 0
   end
 
+  # Pour définir quel joueur doit jouer
   def select_player
     while @board.game_victory == false
       @genre.players.each { |item| choose_case(item) }
@@ -30,7 +31,6 @@ class Game
       end
 
       #Pour relancer en cas de case pleine + mauvaise info
-      puts "le test de la boucle"
       while @board.security(choice) == false
       	puts "la case est déjà prise, choisi une autre case"
       	print "> "
@@ -44,8 +44,8 @@ class Game
 
       #Pour placer le choix
       @board.write_on_case(choice, player.symbol) #permet d'écrire le symbole du joueur dans la case choisi
-      @board.show_board
-      @board.status_victory
+      @board.show_board #montre la board
+      @board.status_victory #vérifie si la partie est terminé
 
   	  if @board.game_victory == true #Dans Board, si le scanner trouve une ligne complete, le joueur gagne
     	  puts "Bravo #{player.name}!! Tu as gagné !!"
@@ -84,6 +84,7 @@ class Game
     ask_new_game
   end
 
+  #relance une partie quand "rejouer" est écrit
   def relance
    	puts "#{@genre.players[0].name} a pour symbole : #{@genre.players[0].symbol} avec #{@statso} victoires"
     puts "#{@genre.players[1].name} a pour symbole : #{@genre.players[1].symbol} avec #{@statsx} victoires"

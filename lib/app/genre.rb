@@ -6,6 +6,7 @@ class Genre
     @players = []
   end
 
+  #Permet de récupérer les pseudo des 2 joueurs et change la phrase de demande celon leur genre
 	def ask_name
 
 		genre = ""
